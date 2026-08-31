@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --color-accent: #2dd4bf;
+  --color-accent-dark: #0f766e;
+}
+
+@layer base {
+  :root {
+    --bg: #f4f6f8;
+    --bg-elevated: #ffffff;
+    --text: #0f172a;
+    --muted: #475569;
+    --border: #e2e8f0;
+    --card: #ffffff;
+    --ring: #0f766e;
+  }
+
+  html.dark {
+    --bg: #070b14;
+    --bg-elevated: #101826;
+    --text: #e8eef7;
+    --muted: #94a3b8;
+    --border: #1e2a3d;
+    --card: #0f1522;
+    --ring: #2dd4bf;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .surface {
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .section-pad {
+    @apply px-5 sm:px-8 lg:px-12 py-20 md:py-24;
+  }
+
+  .fade-up {
+    animation: fade-up 0.7s ease both;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
