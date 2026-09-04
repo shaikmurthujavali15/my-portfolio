@@ -1,5 +1,5 @@
 import { Download, FileText, FolderGit2, Mail } from "lucide-react"
-import profilePhoto from "../assets/profile.jpg"
+import profilePhoto from "../assets/profile.jpg.png"
 import { profile } from "../data/siteData"
 import SocialLinks from "./SocialLinks"
 
